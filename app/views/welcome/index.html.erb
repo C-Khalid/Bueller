@@ -1,0 +1,16 @@
+
+<%= link_to "Create a new student", controller: "posts" %>
+
+<table>
+ 
+  <% @students.each do |s| %>
+    <tr>
+      <td><%= s.name %> </td>
+      <td><%= s.nickname %>  </td>
+      <td><%= s.email %> </td>
+      <td><img src=<%= s.imageurl %> ></td>
+    </tr>
+  <% end %>
+  
+  
+</table>
