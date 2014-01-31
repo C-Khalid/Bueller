@@ -8,7 +8,8 @@
       <td><%= s.name %> </td>
       <td><%= s.nickname %>  </td>
       <td><%= s.email %> </td>
-      <td><img src=<%= s.imageurl %> ></td>
+      <td><%= image_tag s.imageurl.to_s+".jpg" , :width => 80, :height => 80 %> </td>
+      <td><%= link_to 'Edit', edit_post_path(s) %></td>
     </tr>
   <% end %>
   

@@ -1,0 +1,38 @@
+<h1>Editing Student</h1>
+ 
+<%= form_for :student, url: post_path(@student), method: :patch do |f| %>
+  <% if @student.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@stude.errors.count, "error") %> prohibited
+      this post from being saved:</h2>
+    <ul>
+    <% @studet.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :nickname %><br>
+    <%= f.text_area :nickname %>
+  </p>
+
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_area :email %>
+  </p>
+
+  <p>
+    <%= f.label :imageurl %><br>
+    <%= f.text_area :imageurl %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
