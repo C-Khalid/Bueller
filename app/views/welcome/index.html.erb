@@ -1,6 +1,10 @@
 
 <%= link_to "Create a new student", controller: "posts" %>
 
+<% if flash[:notice] -%>
+  <p class='notice'><%=h flash[:notice] %></p>
+<% end -%>
+  
 <table>
  
   <% @students.each do |s| %>

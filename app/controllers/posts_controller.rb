@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     
     if @student.save
       flash[:notice] = " the student was successfully created."
-      redirect_to :root
+      redirect_to :root, :flash => { :notice => "The student was successfully created." }
     else
       render 'new'
     end  
@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     end
     
     @student.save
-    redirect_to :root
+    redirect_to :root, :flash => { :notice => "You successfully updated your profile.!" }
   end
   
   def show
