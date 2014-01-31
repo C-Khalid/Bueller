@@ -29,11 +29,18 @@ class PostsController < ApplicationController
   
   def update
     @student = Student.find(params[:id])
+    @tempImagePath = @student.imageurl
     @student.update(params[:student].permit(:name, :nickname, :email, :imageurl))
-    getPic(@student)
-    if @student.save
-      flash[:notice] = "done"
+    
+    if( @student.imageurl.eql? "Delete")
+      @student.imageurl = "default"
+    elsif( @student.imageurl.eql?  "Change")
+      getPic(@student)     
+    else
+      @student.imageurl = @tempImagePath  
     end
+    
+    @student.save
     redirect_to :root
   end
   

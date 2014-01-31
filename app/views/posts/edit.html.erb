@@ -28,8 +28,11 @@
   </p>
 
   <p>
-    <%= f.label :imageurl %><br>
-    <%= f.text_area :imageurl %>
+    <%= image_tag @student.imageurl+".jpg" , :width => 80, :height => 80 %></br>
+    
+    <%= f.radio_button :imageurl, 'Keep' %> Keep the existing picture</br>
+    <%= f.radio_button :imageurl, 'Change' %> Change the existing picture</br>
+    <%= f.radio_button :imageurl, 'Delete' %> Delete the existing picture
   </p>
 
   <p>
