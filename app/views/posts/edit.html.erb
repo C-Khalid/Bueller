@@ -3,10 +3,10 @@
 <%= form_for :student, url: post_path(@student), method: :patch do |f| %>
   <% if @student.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@stude.errors.count, "error") %> prohibited
+    <h2><%= pluralize(@student.errors.count, "error") %> prohibited
       this post from being saved:</h2>
     <ul>
-    <% @studet.errors.full_messages.each do |msg| %>
+    <% @student.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>
@@ -28,11 +28,17 @@
   </p>
 
   <p>
+    <%= label_tag :new_image_url %><br>
+    <%= text_area_tag :new_image_url %>
+  </p>
+
+  <p>
     <%= image_tag @student.imageurl+".jpg" , :width => 80, :height => 80 %></br>
     
     <%= f.radio_button :imageurl, 'Keep' %> Keep the existing picture</br>
     <%= f.radio_button :imageurl, 'Change' %> Change the existing picture</br>
-    <%= f.radio_button :imageurl, 'Delete' %> Delete the existing picture
+    <%= f.radio_button :imageurl, 'Delete' %> Delete the existing picture</br>
+
   </p>
 
   <p>
