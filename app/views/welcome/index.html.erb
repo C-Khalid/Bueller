@@ -1,9 +1,11 @@
-<%= link_to '<button type="button">Create a new studen</button>'.html_safe, controller: "posts"%>
+<%= link_to '<button type="button">Sign up</button>'.html_safe, controller: "posts"%>
+
 
 <% if flash[:notice] -%>
   <p class='notice'><%=h flash[:notice] %></p>
 <% end -%>
   
+
 <h1>Students:</h1>
   
   <% @students.each do |s| %>

@@ -4,14 +4,18 @@ require 'digest/md5'
 class PostsController < ApplicationController
   
   def new
+
   end
   
   def index
+    @student =  Student.new
   end
   
   def create
     
-    @student = Student.new(params[:post].permit(:name, :nickname, :email, :imageurl))
+    @student = Student.create(params[:post].permit(:name, :nickname, :email, :imageurl, :password, :password_confirmation)  )
+        
+     
     if @student.imageurl.empty?
       email_address = @student.email.downcase
       hash = Digest::MD5.hexdigest(email_address)
@@ -25,17 +29,20 @@ class PostsController < ApplicationController
     @student.imageurl =Student.count.to_s
     
     if @student.save
+      session[:user_id] = @student.id
       flash[:notice] = " the student was successfully created."
-      redirect_to :root, :flash => { :notice => "The student was successfully created." }
-    else
-      render 'new'
+      redirect_to :root
+    else 
+      render 'index'
     end  
   end
   
   def edit
-    @student=Student.find(params[:id])
+    @student=Student.find(session[:user_id])
   end
   
+  def test
+  end
   def update
     @student = Student.find(params[:id])
     @tempImagePath  = @student.imageurl
@@ -71,7 +78,7 @@ class PostsController < ApplicationController
   
   private
   def post_params
-    params.require(:post).permit(:name, :nickname, :email, :imageurl )
+    params.require(:post).permit(:name, :nickname, :email, :imageurl, :password, :password_confirmation)  
   end
   
 end

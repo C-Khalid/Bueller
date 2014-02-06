@@ -14,6 +14,8 @@ gem 'sass-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+gem 'bcrypt-ruby'  
+
 group :development, :test do
   gem 'byebug'
 end
