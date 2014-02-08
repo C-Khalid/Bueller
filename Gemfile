@@ -22,4 +22,11 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'factory_girl_rails'
 end
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
+end
+gem 'turbolinks'

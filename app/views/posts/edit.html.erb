@@ -1,6 +1,9 @@
+  <% if current_user.id == @student.id -%>
+
 <h1>Editing Student</h1>
  
 <%= form_for :student, url: post_path(@student), method: :patch do |f| %>
+
   <% if @student.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@student.errors.count, "error") %> prohibited
@@ -45,3 +48,5 @@
     <%= f.submit %>
   </p>
 <% end %>
+
+<% end -%>

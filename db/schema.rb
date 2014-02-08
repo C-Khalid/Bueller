@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205032425) do
+ActiveRecord::Schema.define(version: 20140207221955) do
+
+  create_table "attendances", force: true do |t|
+    t.boolean  "attendance"
+    t.date     "attended_on"
+    t.datetime "now"
+    t.integer  "seat"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.string   "name"
@@ -30,6 +39,9 @@ ActiveRecord::Schema.define(version: 20140205032425) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
+    t.string   "remember_token"
   end
+
+  add_index "students", ["remember_token"], name: "index_students_on_remember_token"
 
 end
