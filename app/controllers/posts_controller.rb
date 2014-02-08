@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   def update
     @student = Student.find(params[:id])
     @tempImagePath  = @student.imageurl
-    @student.update(params[:student].permit(:name, :nickname, :email, :imageurl))
+    @student.update(params[:student].permit(:name, :nickname, :email, :imageurl, :password, :password_confirmation))
     
     if( @student.imageurl.eql? "Delete")
       

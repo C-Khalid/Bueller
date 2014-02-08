@@ -1,20 +1,14 @@
-<%= link_to '<button type="button">Sign up</button>'.html_safe, controller: "posts"%>
 
 <% if !signed_in? -%>
+  <%= link_to '<button type="button">Sign up</button>'.html_safe, controller: "posts"%>
   <%= link_to '<button type="button">Sign in</button>'.html_safe, controller: "sessions"%>
 <% end -%>
  
 <%  if signed_in? -%>
-   Hello <%= current_user.name %>
   <%= link_to "Sign out", signout_path, method: "delete" %>
   <%= link_to 'Edit', edit_post_path(current_user) %>
 <% end -%>
   
-
-  
-<% if flash[:notice] -%>
-  <p class='notice'><%=h flash[:notice] %></p>
-<% end -%>
   
 <h1>Students:</h1>
   
@@ -25,6 +19,7 @@
         Nickname: <%= s.nickname %> </br> 
         Email: <%= s.email %> </br>
         <%= image_tag s.imageurl.to_s+".jpg" , :width => 100, :height => 100 %>
+      
         </br></br></br>
       </div>
    
