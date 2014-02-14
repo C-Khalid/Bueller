@@ -1,0 +1,14 @@
+<% a = Attendance.new%>
+<% a.attendance = true %>
+<% a.seat = 1 %>
+<% a.student_id = 75 %>
+<% a.save %>
+
+<%= form_for :attendance do |f| %>
+  <p>
+    <%= f.submit "1" %>
+    <%= f.submit "2" %>
+    <%= f.submit "3" %>
+    <%= f.submit "4" %>
+  </p>
+<% end %>

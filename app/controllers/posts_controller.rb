@@ -69,8 +69,11 @@ class PostsController < ApplicationController
       @student.imageurl = @tempImagePath  
     end
 
-    @student.save
-    redirect_to :root, :notice => "You successfully updated your profile. !"
+    if @student.save
+      redirect_to :root, :notice => "You successfully updated your profile. !"
+    else
+      render 'edit'
+    end
   end
   
   def show
