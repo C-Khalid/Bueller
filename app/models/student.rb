@@ -13,6 +13,15 @@ class Student < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def self.in_seat(seat, now)
+       
+	return Student.where ( Attendance.where(:seat => seat, :attended_on => now) )
+  end
+
+  def self.absent(now)
+	return Student.where (  Attendance.where(:attendance => false, :attended_on => now) )
+  end
+
   private
 
     def create_remember_token

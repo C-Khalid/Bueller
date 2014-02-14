@@ -3,11 +3,11 @@
   <%= link_to '<button type="button">Sign up</button>'.html_safe, controller: "posts"%>
   <%= link_to '<button type="button">Sign in</button>'.html_safe, controller: "sessions"%>
 <% end -%>
- 
 <%  if signed_in? -%>
   <%= link_to "Sign out", signout_path, method: "delete" %>
   <%= link_to 'Edit', edit_post_path(current_user) %>
-  <%= link_to '<button type="button">I&#39;m here!</button>'.html_safe, controller: "attendances"%>
+  <%= link_to '<button type="button">I&#39m Here</button>'.html_safe, controller: "attendances"%>
+
 <% end -%>
   
   

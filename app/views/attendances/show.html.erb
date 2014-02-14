@@ -1,0 +1,8 @@
+
+<% user_attendance = Attendance.where(:student_id => current_user.id ) %>
+
+<p>Student Name: <%= current_user.name %></p>
+  
+<p>The date that the attendance was logged: <%= user_attendance.last.attended_on %> </p> 
+  
+<p>The seat number: <%= user_attendance.last.seat %> </p>
