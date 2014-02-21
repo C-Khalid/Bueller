@@ -4,8 +4,8 @@
     <li><%= message %></li>
   <% end %>
 </ul> 
-<% debugger %>
-<%= form_for :student, url: post_path(current_user), method: :patch do |f| %>
+
+<%= form_for :student, url: student_path(current_user), method: :patch do |f| %>
 
 
   

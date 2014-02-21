@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'digest/md5'
 
-class PostsController < ApplicationController
+class StudentsController < ApplicationController
   
   def new
 
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   
   def create
     
-    @student = Student.create(params[:post].permit(:name, :nickname, :email, :imageurl, :password, :password_confirmation)  )
+    @student = Student.create(params[:student].permit(:name, :nickname, :email, :imageurl, :password, :password_confirmation)  )
         
      
     if @student.imageurl.empty?
@@ -81,7 +81,7 @@ class PostsController < ApplicationController
   
   private
   def post_params
-    params.require(:post).permit(:name, :nickname, :email, :imageurl, :password, :password_confirmation)  
+    params.require(:student).permit(:name, :nickname, :email, :imageurl, :password, :password_confirmation)  
   end
   
 end

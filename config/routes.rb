@@ -1,5 +1,5 @@
 Bueller::Application.routes.draw do
-  resources :posts
+  resources :students
   resources :sessions
   resources :attendances
   root to: "welcome#index"
