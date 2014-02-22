@@ -13,13 +13,12 @@ class Student < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
-  def self.in_seat(seat, now)
-       
-	return Student.where ( Attendance.where(:seat => seat, :attended_on => now) )
+  def self.in_seat(seat, date)
+    Student.joins(:attendances).where(attendances: {seat: seat, attended_on: date})
   end
 
-  def self.absent(now)
-	return Student.where (  Attendance.where(:attendance => false, :attended_on => now) )
+  def self.absent(date)
+    Student.joins(:attendances).where.not(attendances: {attended_on: date})
   end
 
   private

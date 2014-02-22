@@ -7,23 +7,53 @@
   <%= link_to "Sign out", signout_path, method: "delete" %>
   <%= link_to 'Edit', edit_student_path(current_user) %>
   <%= link_to '<button type="button">I&#39m Here</button>'.html_safe, controller: "attendances"%>
-
 <% end -%>
   
   
-<h1>Students:</h1>
+<h1>Present </h1>
+    <table border = 1 style="margin: auto; width = 100%; background-color: #F8F8F8  " >
+    <tr>
+      <td height="500" width="500"> 
+        <% Student.in_seat(1, Date.today ).each do |s| %>
+          Nickname: <%= s.nickname %> </br> 
+          <%= image_tag s.imageurl.to_s+".jpg" , :width => 100, :height => 100 %>
+        <% end %>
+      </td>
   
-  <% @students.each do |s| %>
-      <div style="margin-top: 50px; margin-left: 3px; 
+      <td height="500" width="500"> 
+        <% Student.in_seat(2, Date.today ).each do |s| %>
+          Nickname: <%= s.nickname %> </br> 
+          <%= image_tag s.imageurl.to_s+".jpg" , :width => 100, :height => 100 %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td height="500" width="500"> 
+        <% Student.in_seat(3, Date.today ).each do |s| %>
+          Nickname: <%= s.nickname %> </br> 
+          <%= image_tag s.imageurl.to_s+".jpg" , :width => 100, :height => 100 %>
+        <% end %>
+      </td>
+      <td height="500" width="500"> 
+        <% Student.in_seat(4, Date.today ).each do |s| %>
+          Nickname: <%= s.nickname %> </br> 
+          <%= image_tag s.imageurl.to_s+".jpg" , :width => 100, :height => 100 %>
+        <% end %>
+      </td>
+    </tr>
+    </table>
+
+
+
+<h1>Absent </h1>
+<% Student.absent(Date.today).each do |s| %>
+  <div style="margin-top: 50px; margin-left: 3px; 
                   font-family: Arial Black; font-size: 15px;">
         Name: <%= s.name %> </br>
         Nickname: <%= s.nickname %> </br> 
         Email: <%= s.email %> </br>
         <%= image_tag s.imageurl.to_s+".jpg" , :width => 100, :height => 100 %>
       
-        </br></br></br>
-      </div>
-   
-  <% end %>
-  
-  
+       </br></br></br>
+  </div>
+<% end %>
