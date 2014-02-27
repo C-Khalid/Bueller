@@ -8,20 +8,26 @@
   <%= link_to 'Edit', edit_student_path(current_user) %>
   <%= link_to '<button type="button">I&#39m Here</button>'.html_safe, controller: "attendances"%>
 <% end -%>
+<%= link_to 'Attendance History', attendance_path %>
   
-  
+<%= form_for  :root do |f| %>
+  <p>
+    Date: <%= f.date_select  :attended_on %>
+    <%= f.submit "Show" %>	
+  </p>
+<% end %> 
 <h1>Present </h1>
     <table border = 1 style="margin: auto; width = 100%; background-color: #F8F8F8  " >
     <tr>
       <td height="500" width="500"> 
-        <% Student.in_seat(1, Date.today ).each do |s| %>
+        <% Student.in_seat(1, @date ).each do |s| %>
           Nickname: <%= s.nickname %> </br> 
           <%= image_tag s.imageurl.to_s+".jpg" , :width => 100, :height => 100 %>
         <% end %>
       </td>
   
       <td height="500" width="500"> 
-        <% Student.in_seat(2, Date.today ).each do |s| %>
+        <% Student.in_seat(2,  @date ).each do |s| %>
           Nickname: <%= s.nickname %> </br> 
           <%= image_tag s.imageurl.to_s+".jpg" , :width => 100, :height => 100 %>
         <% end %>
@@ -29,13 +35,13 @@
     </tr>
     <tr>
       <td height="500" width="500"> 
-        <% Student.in_seat(3, Date.today ).each do |s| %>
+        <% Student.in_seat(3,  @date ).each do |s| %>
           Nickname: <%= s.nickname %> </br> 
           <%= image_tag s.imageurl.to_s+".jpg" , :width => 100, :height => 100 %>
         <% end %>
       </td>
       <td height="500" width="500"> 
-        <% Student.in_seat(4, Date.today ).each do |s| %>
+        <% Student.in_seat(4,  @date ).each do |s| %>
           Nickname: <%= s.nickname %> </br> 
           <%= image_tag s.imageurl.to_s+".jpg" , :width => 100, :height => 100 %>
         <% end %>
@@ -46,7 +52,7 @@
 
 
 <h1>Absent </h1>
-<% Student.absent(Date.today).each do |s| %>
+<% Student.absent( @date ).each do |s| %>
   <div style="margin-top: 50px; margin-left: 3px; 
                   font-family: Arial Black; font-size: 15px;">
         Name: <%= s.name %> </br>
