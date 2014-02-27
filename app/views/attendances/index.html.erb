@@ -1,7 +1,6 @@
 <%= form_for :attendance do |f| %>
   <p>
     Seat: <%= f.select :seat, (1..4) %>
-    Date: <%= f.date_select  :attended_on %>
     <%= f.submit %>	
   </p>
 <% end %>

@@ -9,7 +9,7 @@ class AttendancesController < ApplicationController
       attendance = Attendance.new
       attendance.attendance = true
       date = params[:attendance]
-      attendance.attended_on = Date.new date["attended_on(1i)"].to_i, date["attended_on(2i)"].to_i, date["attended_on(3i)"].to_i
+      attendance.attended_on = Date.today
       attendance.seat = params[:attendance][:seat]
       attendance.now = DateTime.now
       attendance.student_id = current_user.id
