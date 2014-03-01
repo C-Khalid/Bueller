@@ -7,6 +7,10 @@ class StudentsController < ApplicationController
 
   end
   
+  def show
+    @list = Attendance.where(:student_id => params[:id].to_i )  
+  end
+  
   def index
     @student =  Student.new
   end
@@ -75,9 +79,7 @@ class StudentsController < ApplicationController
       render 'edit'
     end
   end
-  
-  def show
-  end
+
   
   private
   def post_params

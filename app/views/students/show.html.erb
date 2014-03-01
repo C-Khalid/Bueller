@@ -1,0 +1,14 @@
+<table class="table table-striped">
+  <tr>
+    <th>Attendance Date</th>
+    <th>Seat</th>
+  </tr>
+  <tbody>
+  <% @list.each do |a| %>
+  <tr>
+    <td><%= a.attended_on %></td>
+    <td><%= a.seat %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>

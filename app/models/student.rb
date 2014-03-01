@@ -13,6 +13,10 @@ class Student < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def self.last_attendance( student )
+    Attendance.where(:student_id => student.id ).last || Attendance.new 
+  end
+  
   def self.in_seat(seat, now=Date.today)
     present(now).where('attendances.seat = ?', seat)
   end

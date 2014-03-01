@@ -8,14 +8,14 @@
   <%= link_to 'Edit', edit_student_path(current_user) %>
   <%= link_to '<button type="button">I&#39m Here</button>'.html_safe, controller: "attendances"%>
 <% end -%>
-<%= link_to 'Attendance History', attendance_path %>
+<%= link_to 'Attendance History', attendances_show_path %>
+
+
+<%= form_tag "/", method: "get" do %>
+  <p>Date: <input value = "<%= @date %>" name = "date" type="text" id="datepicker"></p>
+  <input type="submit" value="Submit"> 
+<% end %>
   
-<%= form_for  :root do |f| %>
-  <p>
-    Date: <%= f.date_select  :attended_on %>
-    <%= f.submit "Show" %>	
-  </p>
-<% end %> 
 <h1>Present </h1>
     <table border = 1 style="margin: auto; width = 100%; background-color: #F8F8F8  " >
     <tr>

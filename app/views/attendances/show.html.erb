@@ -1,3 +1,16 @@
-<% Student.all.each do |s| %>
-<h1><%= s.name %></h1>
-<% end %>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Attendance Date</th>
+    <th>Seat</th>
+  </tr>
+  <tbody>
+  <% Student.all.each do |s| %>
+  <tr>
+    <td><%= link_to s.name , student_path(s) %></td>
+    <td><%= Student.last_attendance(s).attended_on %></td>
+    <td><%= Student.last_attendance(s).seat %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
