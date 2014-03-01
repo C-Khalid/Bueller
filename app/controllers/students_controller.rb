@@ -8,7 +8,8 @@ class StudentsController < ApplicationController
   end
   
   def show
-    @list = Attendance.where(:student_id => params[:id].to_i )  
+    @list = Attendance.where(:student_id => params[:id].to_i ) 
+    @student = Student.find( params[:id] )
   end
   
   def index
