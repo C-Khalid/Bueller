@@ -10,6 +10,7 @@
 <% end -%>
 <%= link_to 'Attendance History', attendances_show_path %>
 
+<div id="piechart_3d" style="width: 450px; height: 250px;"></div>
 
 <%= form_tag "/", method: "get" do %>
   <p>Date: <input value = "<%= @date %>" name = "date" type="text" id="datepicker"></p>

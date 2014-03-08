@@ -3,13 +3,17 @@ require 'digest/md5'
 
 class StudentsController < ApplicationController
   
+  skip_before_filter :require_login
+  
   def new
 
   end
   
   def show
+    
     @list = Attendance.where(:student_id => params[:id].to_i ) 
     @student = Student.find( params[:id] )
+    
   end
   
   def index
@@ -48,6 +52,7 @@ class StudentsController < ApplicationController
   
   def test
   end
+  
   def update
     @student = Student.find(params[:id])
     @tempImagePath  = @student.imageurl
