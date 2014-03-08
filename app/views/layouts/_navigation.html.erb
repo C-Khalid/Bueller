@@ -8,9 +8,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+       <%= render 'layouts/messages' %>
     </div>
     <div class="collapse navbar-collapse">
+      <% if !current_user.nil? %>
+        <%= link_to 'Home', root_path, class: 'navbar-brand' -%>&nbsp;&nbsp;
+        <%= link_to 'Student list', list_path -%>&nbsp;&nbsp;
+        <%= link_to 'Attendance History', attendances_show_path %>&nbsp;&nbsp;
+        <%= link_to "Sign out", signout_path, method: "delete" -%>&nbsp;&nbsp;
+        <%= link_to 'Edit', edit_student_path(current_user) -%>&nbsp;&nbsp;
+        <%= link_to 'I&#39m Here'.html_safe, controller: "attendances"%>
+      <% end %>
       <ul class="nav navbar-nav">
         <%= render 'layouts/navigation_links' %>
       </ul>

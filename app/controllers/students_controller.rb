@@ -6,7 +6,11 @@ class StudentsController < ApplicationController
   skip_before_filter :require_login
   
   def new
-
+    
+  end
+  
+  def list
+    @students = Student.all
   end
   
   def show
@@ -28,11 +32,11 @@ class StudentsController < ApplicationController
     if @student.imageurl.empty?
       email_address = @student.email.downcase
       hash = Digest::MD5.hexdigest(email_address)
-      File.write("/home/action/Bueller/app/assets/images/"+Student.count.to_s+".jpg", open( "http://www.gravatar.com/avatar/#{hash}"
+      File.write("/home/action/nku-rails/app/assets/images/"+Student.count.to_s+".jpg", open( "http://www.gravatar.com/avatar/#{hash}"
                                                                                            ).read, {mode: 'wb'})
     else
       
-      File.write("/home/action/Bueller/app/assets/images/"+Student.count.to_s+".jpg", open( @student.imageurl.to_s ).read, {mode: 'wb'})
+      File.write("/home/action/nku-rails/app/assets/images/"+Student.count.to_s+".jpg", open( @student.imageurl.to_s ).read, {mode: 'wb'})
     
     end
     @student.imageurl =Student.count.to_s
@@ -67,10 +71,10 @@ class StudentsController < ApplicationController
           if params[:new_image_url].empty?
             email_address = @student.email.downcase
             hash = Digest::MD5.hexdigest(email_address)
-            File.write("/home/action/Bueller/app/assets/images/"+Student.count.to_s+".jpg", 
+            File.write("/home/action/nku-rails/app/assets/images/"+Student.count.to_s+".jpg", 
                     open( "http://www.gravatar.com/avatar/#{hash}").read, {mode: 'wb'})
           else
-            File.write("/home/action/Bueller/app/assets/images/"+Student.count.to_s+".jpg", 
+            File.write("/home/action/nku-rails/app/assets/images/"+Student.count.to_s+".jpg", 
                     open( params[:new_image_url] ).read, {mode: 'wb'})
    
           end

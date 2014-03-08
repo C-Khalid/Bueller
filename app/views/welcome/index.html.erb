@@ -1,16 +1,4 @@
 
-<% if !signed_in? -%>
-  <%= link_to '<button type="button">Sign up</button>'.html_safe, controller: "students"%>
-  <%= link_to '<button type="button">Sign in</button>'.html_safe, controller: "sessions"%>
-<% end -%>
-<%  if signed_in? -%>
-  <%= link_to "Sign out", signout_path, method: "delete" %>
-  <%= link_to 'Edit', edit_student_path(current_user) %>
-  <%= link_to '<button type="button">I&#39m Here</button>'.html_safe, controller: "attendances"%>
-<% end -%>
-<%= link_to 'Attendance History', attendances_show_path %>
-
-<div id="piechart_3d" style="width: 450px; height: 250px;"></div>
 
 <%= form_tag "/", method: "get" do %>
   <p>Date: <input value = "<%= @date %>" name = "date" type="text" id="datepicker"></p>
